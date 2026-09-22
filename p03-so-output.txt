@@ -1,0 +1,37 @@
+main: line 242: lsnrctl: command not found
+stat: cannot statx '/sqlplus/admin/glogin.sql': No such file or directory
+grep: /sqlplus/admin/glogin.sql: No such file or directory
+grep: /sqlplus/admin/glogin.sql: No such file or directory
+stat: cannot statx '/network/admin/tnsnames.ora': No such file or directory
+grep: /network/admin/tnsnames.ora: No such file or directory
+=====================================================================
+      Validación de resultados 📋 (Tomar captura desde aquí)
+=====================================================================
+Fecha ............................. 2026-09-22 04:43:02
+Usuario ........................... martin
+Hostname .......................... h1-bda-mqr.fi.unam
+Asignatura ........................ bda
+Semestre .......................... 2027-1
+Práctica .......................... 03
+=====================================================================
+
+
+✅ [PASS] 01 - Uso de un contenedor Docker: Uso de un contenedor Docker correcto
+✅ [PASS] 02 - Usuario de ejecución distinto a oracle y root: Usuario de ejecución: martin
+❌ [FAIL] 03 - Variables de entorno definidas en /etc/profile.d/99-custom-env.sh: Faltan o están definidas en otro lugar (no en /etc/profile.d/99-custom-env.sh): ORACLE_HOSTNAME ORACLE_BASE ORACLE_HOME ORA_INVENTORY ORACLE_SID NLS_LANG PATH LD_LIBRARY_PATH — deben homologarse en ese script, no en .bashrc ni ningún otro archivo
+❌ [FAIL] 04 - Variable ORACLE_HOSTNAME: Valor inválido para ORACLE_HOSTNAME:  (esperado h1-bda-mqr.fi.unam)
+❌ [FAIL] 05 - Variable ORACLE_SID: Valor inválido para ORACLE_SID:  (esperado free)
+❌ [FAIL] 06 - Variable NLS_LANG: Valor inválido para NLS_LANG:  (esperado American_America.AL32UTF8)
+❌ [FAIL] 07 - Status del listener: Status del listener inválido, no se encontró READY
+❌ [FAIL] 08 - Permisos de glogin.sql: Permisos de glogin.sql inválidos:  (esperado -rwxr-xr-x)
+❌ [FAIL] 09 - Configuración del editor en glogin.sql: Variable _editor no configurada en glogin.sql
+❌ [FAIL] 10 - Personalización del prompt en glogin.sql: Prompt no configurado en glogin.sql
+❌ [FAIL] 11 - Permisos de tnsnames.ora: Permisos de tnsnames.ora inválidos:  (esperado -rwxr-xr-x)
+❌ [FAIL] 12 - Alias de sqlplus con rlwrap: No se encontró alias para sqlplus con rlwrap en /etc/profile.d/99-custom-env.sh
+❌ [FAIL] 13 - Alias de servicio para la PDB 1: No se encontró nombre de servicio para la PDB 1 en tnsnames.ora
+
+⚠️ RESUMEN: 2/13 validaciones correctas
+FVH: ffa4662921363e312818fd1c26c32131542674ff731d36bddb6df9db73c7f5fc
+================== : Fin de captura : =======================
+
+

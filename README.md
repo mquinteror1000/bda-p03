@@ -33,9 +33,10 @@ Se usarán para guardar los archivos de la base de datos **(datafiles, redo logs
 Editar **/unam/bda/practicas/03/debian/02-crea-red-docker-EDIT.sh**
 
 ```bash
-# editar
-NETWORK_NAME="bda_network"
+## modificar
 MATERIA="bda"
+INICIALES="mqr"
+BASE_IMAGE="ol-mqr:1.0"
 ```
 
 ejecutar **/unam/bda/practicas/03/debian/02-crea-red-docker-EDIT.sh**
@@ -97,3 +98,5 @@ c1-bda-mqr
 bash-5.1# ls /unam/
 bda  bdd
 ```
+
+## Configurar contenedor
