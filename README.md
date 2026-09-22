@@ -1,6 +1,6 @@
 # bda-p03
 
-practica 03 de BDA
+Práctica 03 de BDA
 
 ## Objetivo:
 
@@ -18,29 +18,17 @@ Se usarán para guardar los archivos de la base de datos **(datafiles, redo logs
 
 #### Volúmenes nombrados
 
-| materia | iniciales | volumen         | punto de montaje |
-| ------- | --------- | --------------- | ---------------- |
-| BDA     | mqr       | bda-oradata-mqr |                  |
-| BDD     | mqr       | bdd-oradata-mqr |                  |
-
-editar **/unam/bda/practicas/03/debian/01-crea-volumen-EDIT.sh**
-
-```bash
-
-```
-
-ejecutar
-
-```shellsession
-
-```
+| materia | iniciales | volumen         | punto de montaje(container) | En el host                                       |
+| ------- | --------- | --------------- | --------------------------- | ------------------------------------------------ |
+| bda     | mqr       | bda-oradata-mqr | /opt/oracle/oradata         | /var/lib/docker/volumes/v1-bda-oradata-mqr/_data |
+| bda     | mqr       | bdd-oradata-mqr | /opt/oracle/oradata         | /var/lib/docker/volumes/v1-bda-oradata-mqr/_data |
 
 #### RED
 
 | materia | iniciales | contenedor | network     | subnet        | dirección   | puerto publicado |
 | ------- | --------- | ---------- | ----------- | ------------- | ----------- | ---------------- |
-| BDA     | mqr       | c1-bda-mqr | bda_network | 172.22.0.0/16 | 172.22.0.11 | 1522:1521        |
-| BDD     | mqr       | c1-bda-mqr | bdd_network | 172.23.0.0/16 | 172.22.0.11 | 1523:1521        |
+| bda     | mqr       | c1-bda-mqr | bda_network | 172.22.0.0/16 | 172.22.0.11 | 1522:1521        |
+| bda     | mqr       | c1-bda-mqr | bdd_network | 172.23.0.0/16 | 172.22.0.11 | 1523:1521        |
 
 Editar **/unam/bda/practicas/03/debian/02-crea-red-docker-EDIT.sh**
 
@@ -66,10 +54,46 @@ NETWORK ID     NAME          DRIVER    SCOPE
 
 ### Crear el contenedor
 
-editar fddfdfd
+editar **/unam/bda/practicas/03/debian/02-crea-contenedor-EDIT.sh**
 
-ejecutar sdsdsds
+```bash
+## modificar
+MATERIA="bda"
+INICIALES="mqr"
+BASE_IMAGE="ol-mqr:1.0"
+```
 
+ejecutar **/unam/bda/practicas/03/debian/02-crea-contenedor-EDIT.sh**
 
+```shellsession
+martin@pc-bda-mqr:/unam/bda/practicas/03/debian$ sh 02-crea-contenedor-EDIT.sh 
+NETWORK_NAME: bda_network
+VOLUME_NAME: v1-bda-oradata-mqr
+v1-bda-oradata-mqr
+CONTAINER_NAME: c1-bda-mqr
+HOSTNAME: h1-bda-mqr.fi.unam
+UNAM_HOME: /unam
+bash-5.1#
+```
 
-Ahora dentro del contenedor
+Si todo esta correcto entrega una shell del nuevo contenedor. SAlir de este
+
+#### Agregar los alias de acceso rápido al contenedor
+
+agregar en .bashrc el usuario **/home/martin/.bashrc**
+
+```bash
+alias dockerBda1='docker start c1-bda-mqr && docker attach c1-bda-mqr'​
+alias dockerBda1T='docker exec -it c1-bda-mqr bash'
+```
+
+probar
+
+```shellsession
+martin@pc-bda-mqr:~$ su -l martin
+Password:
+martin@pc-bda-mqr:~$ dockerBda1
+c1-bda-mqr
+bash-5.1# ls /unam/
+bda  bdd
+```
