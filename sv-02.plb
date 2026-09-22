@@ -1,0 +1,122 @@
+create or replace procedure valida_cdb_multitenant wrapped 
+a000000
+369
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+7
+147 150
+0d4wm8Ej+eF6rb3mMGprKXttPlkwgwHQ2SdqfC/pmDPqR2bp3461qSnmYRvpcNk1K3SHWKHY
+6coyuiTCl8a/jtOrFhFr97mtRYMxRWcNxOcfe085/NBqa7VxctneCO/wmX0b4RH45kNQSIn1
+ZZyy6Hq8RUgHk4mGB9923kvbFTWF3ob82sINMoHbAa9cd2/rbzsZn39yKPja48v9CJ/a02yv
+N8koHZajvMmlgtjvVeR/LiTV/trRHqJpc40uHNIBai9ENZe1OIG3OpqQqR6BGTd44eA/PHKa
+PwZppravcPHpEY6gwnfyQH4PzQywpKvecTObmVk1uv4=
+
+/
+show errors
+create or replace procedure valida_charset_cdb wrapped 
+a000000
+369
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+7
+30a 1b6
+K0l1xl2uqniztslvB4Mzg4sp3F4wg5AJ1/YVfI6avqqVmGMVBF41OcKEWQ8XYC5s8KRB5tg4
+thhKPM1dLJ0azn+gfkjtABm7TmNeWGVfydPu64kKY7OVEyYnmD2VwPt6mabA19TDyU3dqq2N
+P4oCc/j/pfgrmZf/Ye/PBhU4ZVnIPnWX9RgJ1zLct4jhH8UAs6RWpyk2ZuV948lN/hFKImrZ
+BEwVjKkOtkaAymb6qyIBnu3niDnqgzqgtWGOhxqVVxcm25h2bNDBOFBxHjDagGOhnXheCB2+
+eZ9dOmq8SHDea3yNPmFhwg1P8h1Wq6RnwZTtL4qfSUP2Uj/KLzxvfnNI1QN8uOd3qNyMTroC
+izcTq1U3CzJbJIFUE+ANkxPC7VBD+5YGI8SdgqMMuYYco1HjaKrspeMcWNEZpYuZVtNySw==
+
+
+/
+show errors
+create or replace procedure valida_pdb wrapped 
+a000000
+369
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+7
+485 2fe
+jup4ztgQjDwbTDJbcwB+DaLo54gwg41er0qDfC/NWGR1hNUHXDa6oLDpdtNlVqfjtq1AzTPg
+WBuD8KLTqw4nY3NjAMNzNj/Yn9PC+8tcEKF6P0H+yRlXXa+O7WyAzmvf3thd34e6a5E3u/wE
+AUvAzvW5pcwsEXcdVPre3RSBDpMK0GvBYNZ7zqF6AlfiaTXjWZI3B0zD/TQ2nvwPHS5LHY43
+uG9lUQ/MktFLY7tmLHgYp1luNjVT4xQB4SxHLW0oid5pRplunk3IPPDiAvSP9V4scjCPeGgj
+/leATNrHoOi9VmovQgX3+VOw+/U8wtyPb9t2sgenZbJXyyuFKYr6/D3Ayf9m5pgxL+RYuTOh
++WJcL0lLzA4+N90e1W4EoxGHEYV7PtAgnt8TXZONDrwsSiAa6Uvhn719fum8ltCqyq5OwYSH
+wXd/Wt/IHzFFWSdAbfLlVnNSge4Wp25YqpFB0WTlws1YLTxAPDSLsbQLHbFMpdi/IHDnTyCA
+v9fGQMzX6zOY/z1YKJjaHTNjcrW71w1bVThupu59MKWFJt3ot9uW4Ov2aQUaaCyXqlSEGHnx
+2dhQDr1xSR5BK8SY0iMM3WXozSGcowrcrCIpXD+gKldBScGSBL7blqzaMipd8iuQMri83MDS
+doUhQSHy/Pl4TgviMWkpVbCTCQuiytfHxP9ZqFJ6R8Lulu2PQwH1v09j/pikKU9sgwpZpKof
+SeVOwaOh0lXoooKR1Rc1AID8J9Qs+eHbMH8H
+
+/
+show errors
+create or replace procedure valida_pdb_estado_persistente wrapped 
+a000000
+369
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+7
+20e 1ee
+L7PraY5cBlcnBjbWSUNG+4Gr10owg3nMDNxqfC8BVV40TKtGL+ChNgki698J9oDcq9uXwP0K
+xZ55XVNMMq+oU72AjxtuNklpngmcQUKdQv820D5YmRWHPR7y+uijWlWjXHkBjC6YSDsZVABH
+FIYDha8JQGWOCBSOxCIlz6aJZYvHK8oTi2UBRPChNtbj1D7H2W7ojh9982oMxnBEJGVoIxTO
+dKGOl1b0kRyniYU055n89SxJXeTg/xSZF0YSRwNf2yDTmjXmpw7GmDvGguCHfH3TlXFQMqFm
+pACyVfiJCPt46nPdjPlg5L7zaivNKmhoJyyNYDuP4K9q7qmMHqqfF/Q93FjlEmLE1H1jXJaQ
+7P7WkbqgqyMDaEjYOjAH4mty9/0Bd5PGhzlV22rBHv3SA4e52GW/aQ09OS7tujt3UTxNiVyZ
+Q2jDTIb1DI+tvSQEyNUKdLDem1XfvgbT0UxjQuwfXSLRU87hBZwTQg==
+
+/
+show errors

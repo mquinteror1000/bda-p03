@@ -1,0 +1,144 @@
+create or replace package vcore wrapped 
+a000000
+369
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+9
+24d 158
+ZyGj5681aZWloDoLxag3XZYIgxwwg/D3LUhqfHSi2sHVIWFnsOJYVPyKL8wUnPFf320Hysc3
+yzr5hWCRFALwb4/KpbjPeuXvGV6Zx60QtW6yldfUdb57snQTlGA0GsElPu03UaBBCSvFeeu3
+m0rSzYHoYHYvXi11bA1eBhRZ0CfzD2HVXRzF1+oBx6UrVKxP5LuoV8hkamJmCvW3NN0i25/n
++Ajt6OYqfZ147/YHpIXmW88bY0Xv8c+RGpUe0l1gFSxf+CfClh/V9KsIXV3njBbET2pkVxf9
+t4aKFu4zglB7DpuxMZ22TudHXp4tIUqWhzD2I8sYzeuU1WisZg==
+
+/
+show errors
+create or replace package body vcore wrapped 
+a000000
+369
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+b
+15f3 934
+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
+pYt4AOtO+ilJteFldMCX
+
+/
+show errors
+create or replace package vutils wrapped 
+a000000
+369
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+9
+9e b2
+hmKXqIvNq/pUDN2pAaH+3xXkjHIwg/BfLcsVfHRE2sHVehWXg/ry2OAqGGITkYFf2znN/rf3
+8ymhxGgAlTSGYLgcT8Eesn0+++TcLmWNSDYd1R90CH3cby7m8FvqgwRt2ClP/FG2pPBshY1+
+QN158qe7EcQez2srcNJb6g+clkkeSWQ=
+
+/
+show errors
+create or replace package body vutils wrapped 
+a000000
+369
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+abcd
+b
+3c0 1f2
+ERwjIwYNSDqjL5X7RYhn/wx/+1Mwg9f3LdxqfC9AWPiOxK33L9OQadU5eH+VZhjv2r31GCU8
+hGnjzG6i5vy6COc0BEqhmSdr3anbkfi5nbX//um0mK/H4YKLlg72E1F3qZURNi9Si/Mk7jYJ
+dmksF1mR9Mp6mZNvUuwlqUc+M4hpOHemKStw0miY1M+KbtCWaCah/19laLYu0ahwxEba4Khl
+0AJ/vm2kdyeT2eWEsKmJ/5IfwDsCPoEESRc+7tIn7rSFgJjIlWeEuGk7wwvZHs9c8l1BywmJ
+fd9kmUT2k6zR9e8swGnQwv8TUYLMtj7lYDXL7R16r3CloQCFEr4n6pXZxyr7NhPX+HbaKj5r
+AINL/LYMvYttIKQK4BG+u95izdNafaodCyNfbrZY769uwl/j47iZlmjuwLVb+jsF7kskAT4y
+qkwKOPcHYKqV9VvSbbzW89KTAwRiNWITYV6dqEjnBXDT62dZrof7SheOnA==
+
+/
+show errors
+grant execute on vcore to public;
+grant execute on vutils to public;
+create or replace public synonym vcore for vcore;
+create or replace public synonym vutils for vutils;
