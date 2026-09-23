@@ -100,3 +100,74 @@ bda  bdd
 ```
 
 ## Configurar contenedor
+
+#### Variables de entorno y propietario de oradata
+
+modificar **/unam/bda/practicas/03/debian/container/03-permisos-variables-EDIT.sh**
+
+```bash
+## modificar
+MATERIA="bda"
+INICIALES="mqr"
+ORACLE_VERSION="23ai"
+ORACLE_SID="free"
+UNAM_HOME="/unam"
+```
+
+Ejecutar **/unam/bda/practicas/03/debian/container/03-permisos-variables-EDIT.sh**
+
+```shellsession
+[martin@h1-bda-mqr container]$ sudo sh 03-permisos-variables-EDIT.sh 
+CONTAINER_NAME: c1-bda-mqr
+HOSTNAME: h1-bda-mqr.fi.unam
+El directorio /opt/oracle/oradata ya pertenece a oracle:oinstall. Continuando...
+Contenido actual de /etc/profile.d/99-custom-env.sh
+
+# Variables de entorno Oracle - generadas automáticamente
+export UNAM_HOME=/unam
+export ORACLE_HOSTNAME=c1-bda-mqr
+export ORACLE_BASE=/opt/oracle
+export ORACLE_HOME=/opt/oracle/product/23ai/dbhomeFree
+export ORA_INVENTORY=/opt/oracle/oraInventory
+export ORACLE_SID=free
+export NLS_LANG=American_America.AL32UTF8
+export PATH=${ORACLE_HOME}/bin:$PATH
+export LD_LIBRARY_PATH=${ORACLE_HOME}/lib:${LD_LIBRARY_PATH}
+```
+
+#### Crear un listener modo no interactivo
+
+Modificar el script **/unam/bda/practicas/03/debian/container/04-crea-listener-EDIT.sh**
+
+```bash
+# editar
+ASIGNATURA="bda"
+```
+
+Cambiar al usuario **oracle** con **su -l oracle** y  ejecutar el script  **/unam/bda/practicas/03/debian/container/04-crea-listener-EDIT.sh**
+
+```shellsession
+
+[martin@h1-bda-mqr container]$ su -l oracle
+Password: 
+Last login: Tue Sep 22 19:55:40 CST 2026 on pts/1
+[oracle@h1-bda-mqr ~]$ cd /unam/bda/practicas/03/debian/container/
+[oracle@h1-bda-mqr container]$ sh 04-crea-listener-EDIT.sh 
+==> Creando listener de Oracle en modo silencioso
+==> Verificando que el usuario actual sea 'oracle'...
+==> Verificando la existencia del archivo de respuestas /unam/bda/practicas/03/debian/container/listener_silet.rsp...
+==> Creando listener con archivo de respuestas /unam/bda/practicas/03/debian/container/listener_silet.rsp
+[...]
+==> Verificando el status del listener...
+[...]
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=h1-bda-mqr.fi.unam)(PORT=1521)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
+The listener supports no services
+The command completed successfully
+==> Listener creado y en ejecución correctamente.
+
+
+```
+
+#### Crear una CDB modo no interactivo
