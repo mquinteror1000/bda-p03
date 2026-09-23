@@ -1,0 +1,9 @@
+export UNAM_HOME=/unam
+export ORACLE_HOSTNAME=c1-bda-mqr
+export ORACLE_BASE=/opt/oracle
+export ORACLE_HOME=/opt/oracle/product/23ai/dbhomeFree
+export ORA_INVENTORY=/opt/oracle/oraInventory
+export ORACLE_SID=free
+export NLS_LANG=American_America.AL32UTF8
+export PATH=/opt/oracle/product/23ai/dbhomeFree/bin:$PATH
+export LD_LIBRARY_PATH=${ORACLE_HOME}/lib:${LD_LIBRARY_PATH}
