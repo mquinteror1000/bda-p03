@@ -54,7 +54,7 @@ ORA_INVENTORY="${ORACLE_BASE}/oraInventory"
 cat > /etc/profile.d/99-custom-env.sh << EOF
 # Variables de entorno Oracle - generadas automáticamente
 export UNAM_HOME=${UNAM_HOME}
-export ORACLE_HOSTNAME=${CONTAINER_NAME}
+export ORACLE_HOSTNAME=${HOSTNAME}
 export ORACLE_BASE=${ORACLE_BASE}
 export ORACLE_HOME=${ORACLE_HOME}
 export ORA_INVENTORY=${ORA_INVENTORY}

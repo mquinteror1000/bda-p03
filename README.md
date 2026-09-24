@@ -81,6 +81,8 @@ Si todo esta correcto entrega una shell del nuevo contenedor. SAlir de este
 
 #### Agregar los alias de acceso rápido al contenedor
 
+De manera **manual**
+
 agregar en .bashrc el usuario **/home/martin/.bashrc**
 
 ```bash
@@ -101,7 +103,11 @@ bda  bdd
 
 ## Configurar contenedor
 
-#### Variables de entorno y propietario de oradata
+#### Variables de entorno
+
+Se agregan las variables de entorno necesarias en /etc/profile.d/99-custom-env.sh
+
+También se cambia el propietario del folder ${ORACLE_HOME}/oradata
 
 modificar **/unam/bda/practicas/03/debian/container/03-permisos-variables-EDIT.sh**
 
@@ -172,12 +178,20 @@ The command completed successfully
 
 #### Crear una CDB modo no interactivo
 
+Este script crea una CDB con la primera PDB
+
+
+
 editar el script **/unam/bda/practicas/03/debian/container/05-crea-cdb-silent-oracle-EDIT.sh**
 
 ```bash
 #editar
-PDBNAME="mqrbda"
+PDBNAME="mqrbda_s1"
 NUMBEROFPDBS=1
+# si fuera bdd
+#NUMBEROFPDBS=2
+#PDBNAME="mqrbdd_s"
+
 ```
 
 ejecutar el script **/unam/bda/practicas/03/debian/container/05-crea-cdb-silent-oracle-EDIT.sh**
@@ -222,3 +236,215 @@ CDB$ROOT
 ```
 
 podemos continuar
+
+#### En caso de querer eliminar una PDB
+
+ejecutar como oracle
+
+```bash
+dbca -silent -deleteDatabase -sourceDB FREE
+```
+
+```shellsession
+[oracle@h1-bda-mqr container]$ dbca -silent -deleteDatabase -sourceDB FREE
+Enter SYS user password: 
+
+[WARNING] [DBT-11503] The instance (FREE) is not running on the local node. This may result in partial delete of Oracle database.
+   CAUSE: A locally running instance is required for complete deletion of Oracle database instance and database files.
+   ACTION: Specify a locally running database, or execute DBCA on a node where the database instance is running.
+[WARNING] [DBT-19202] The Database Configuration Assistant will delete the Oracle instances and datafiles for your database. All information in the database will be destroyed.
+Prepare for db operation
+32% complete
+Connecting to database
+[...]
+Database deletion completed.
+```
+
+
+
+## Configuración de alias y tnsnames
+
+Este script
+
+- crea el alias sqlplus='rlwrap sqlplus'
+
+- da de alta el servicio **mqrbda_s1** con el formato <iniciales><materia>s_1
+
+Editar el script **/unam/bda/practicas/03/debian/container/07-alias-tnsnames-root-EDIT.sh**
+
+```bash
+# editar
+MATERIA="bda"
+INICIALES="mqr"
+```
+
+ejecutarlo
+
+```shellsession
+[martin@h1-bda-mqr container]$ sudo sh 07-alias-tnsnames-root-EDIT.sh 
+alias sqlplus='rlwrap sqlplus' ya existe en /etc/profile.d/99-custom-env.sh No se hicieron cambios.
+escrito en nombre de servicio [mqrbda_s1] en el archivo /opt/oracle/product/23ai/dbhomeFree/network/admin/tnsnames.ora
+ahora se vale conectarse asi sqlplus sys@mqrbda_s1 as sysdba despues de iniciar listener y la cdb
+```
+
+## Script para levantar rápido Listener e instancia
+
+Tomado del profesor
+
+editar el script  **/unam/bda/practicas/03/debian/container/launch.sh**
+
+```bash
+#editar
+ADMINUSER="martin"
+```
+
+darle privilegios de ejecución
+
+y con **sudo**  copiarlo/moverlo a **/usr/bin** preferiblemente sin extensión asi **/usr/bin/launch**
+
+```shellsession
+[martin@h1-bda-mqr container]$ sudo mv launch.sh /usr/bin/launch
+[martin@h1-bda-mqr container]$ chmod +x /usr/bin/launch
+```
+
+ahora tras iniciar el contenedor  o loguearnos como root, simplemente
+
+```shellsession
+martin@pc-bda-mqr:~$ dockerBda1
+c1-bda-mqr
+bash-5.1# launch 
+Verificando el listener...
+Iniciando el listener...
+[...]
+Verificando el estado de la instancia...
+Iniciando la instancia...
+ORACLE instance started.
+
+Total System Global Area 1603287928 bytes
+Fixed Size		    4922232 bytes
+Variable Size		  452984832 bytes
+Database Buffers	 1140850688 bytes
+Redo Buffers		    4530176 bytes
+Database mounted.
+Database opened.
+Cambiando al usuario admin
+Last login: Thu Sep 24 07:52:02 CST 2026 on pts/0
+[martin@h1-bda-mqr ~]$ 
+```
+
+y podemos acceder a nuestr pdb de manera directa con sqlplus
+
+```shellsession
+[martin@h1-bda-mqr ~]$ sqlplus sys/system1@mqrbda_s1 as sysdba
+
+SQL*Plus: Release 23.0.0.0.0 - Production on Thu Sep 24 13:48:07 2026
+Version 23.8.0.25.04
+
+Copyright (c) 1982, 2025, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
+Version 23.8.0.25.04
+
+SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
+Help: https://docs.oracle.com/error-help/db/sp2-0734/
+sys@mqrbda_s1> 
+
+```
+
+## Validador
+
+Primer parte en el Host
+
+ejecutar  **/unam/bda/practicas/03/runval01.sh**
+
+```shellsession
+[martin@h1-bda-mqr 03]$ sh runval01.sh 
+=====================================================================
+      Validación de resultados 📋 (Tomar captura desde aquí)
+=====================================================================
+Fecha ............................. 2026-09-24 13:52:39
+Usuario ........................... martin
+Hostname .......................... h1-bda-mqr.fi.unam
+Asignatura ........................ bda
+Semestre .......................... 2027-1
+Práctica .......................... 03
+=====================================================================
+
+
+✅ [PASS] 01 - Uso de un contenedor Docker: Uso de un contenedor Docker correcto
+✅ [PASS] 02 - Usuario de ejecución distinto a oracle y root: Usuario de ejecución: martin
+✅ [PASS] 03 - Variables de entorno definidas en /etc/profile.d/99-custom-env.sh: Correcto.
+✅ [PASS] 04 - Variable ORACLE_HOSTNAME: ORACLE_HOSTNAME: h1-bda-mqr.fi.unam
+✅ [PASS] 05 - Variable ORACLE_SID: ORACLE_SID: free
+✅ [PASS] 06 - Variable NLS_LANG: NLS_LANG: American_America.AL32UTF8
+✅ [PASS] 07 - Status del listener: Status READY encontrado para el listener
+✅ [PASS] 08 - Permisos de glogin.sql: Permisos de glogin.sql: -rwxr-xr-x
+✅ [PASS] 09 - Configuración del editor en glogin.sql: Editor configurado: define _editor=vim
+✅ [PASS] 10 - Personalización del prompt en glogin.sql: Prompt configurado: set sqlprompt '&prompt_value> '
+✅ [PASS] 11 - Permisos de tnsnames.ora: Permisos de tnsnames.ora: -rwxr-xr-x
+✅ [PASS] 12 - Alias de sqlplus con rlwrap: Alias configurado: alias sqlplus=rlwrap sqlplus
+✅ [PASS] 13 - Alias de servicio para la PDB 1: Nombre de servicio encontrado: (SERVICE_NAME = mqrbda_s1.fi.unam)
+
+🏆 RESUMEN: 13/13 validaciones correctas
+FVH: b9229f1809f49831d328db6a74dcdf80502180dfc4324eb6f92459148cb4492f
+================== : Fin de captura : =======================
+
+```
+
+
+
+#### Segunda parte, validar con CDB$ROOT
+
+
+
+
+
+#### Tercera parte, validar con MQRBDA_S1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7

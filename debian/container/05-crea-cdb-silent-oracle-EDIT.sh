@@ -3,7 +3,7 @@
 # cargar variables de entorno
 . /etc/profile.d/99-custom-env.sh
 #editar
-PDBNAME="mqrbda"
+PDBNAME="mqrbda_s1"
 NUMBEROFPDBS=1
 # si fuera bdd
 #NUMBEROFPDBS=2
@@ -17,8 +17,23 @@ if [ "$(whoami)" != "oracle" ]; then
 echo "Error: este script debe ejecutarse como usuario 'oracle'."
 exit 1
 fi
-echo "==> Usuario verificado. Iniciando creación de la CDB..."
 
+## revisar que no exista ya la CDB
+SID="free"
+DB_EXISTS=0
+
+# 1. ¿Hay un proceso pmon del SID?
+if pgrep -f "ora_pmon_${SID}" > /dev/null 2>&1; then
+  DB_EXISTS=1
+fi
+
+# 2. ¿Existe el directorio de datafiles típico?
+if [ -d "${DATAFILE_DEST}/FREE" ] || [ -d "${DATAFILE_DEST}/${SID}" ]; then
+  DB_EXISTS=1
+fi
+
+
+echo "==> Usuario verificado. Iniciando creación de la CDB..."
 dbca -silent -createDatabase \
 -gdbName free.fi.unam \
 -sid free \
