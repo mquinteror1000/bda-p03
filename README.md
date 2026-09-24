@@ -411,11 +411,22 @@ sys@free> alter pluggable database all save state;
 Pluggable database altered.
 ```
 
-Salir y ahora si ejecutar la segunda parte
+Modificar el script del profesor **/unam/bda/practicas/03/sv-03-main.sql**
+
+para agregar los datos solicitados
+
+```sql
+--Password de sys/system (mismo para ambos en el curso)
+define v_password = 'system1'
+--Iniciales del estudiante
+define v_iniciales = 'mqr'
+--asignatura ( bd | bda | bdd )
+define v_asignatura = 'bda'
+```
 
 ejecutar sqlplus /nolog
 
-dentro de sqlplus ejecutar 
+dentro de sqlplus ejecutar  el script sql del profesor 
 
 ```shellsession
 [martin@h1-bda-mqr 03]$ sqlplus /nolog
