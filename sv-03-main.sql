@@ -16,10 +16,10 @@ whenever sqlerror continue
 ----------------------------------------------------------------------
 
 --Password de sys/system (mismo para ambos en el curso)
-define v_password = system1
+define v_password = 'system1'
 
 --Iniciales del estudiante
-define v_iniciales = jrc
+define v_iniciales = 'mqr'
 
 --asignatura ( bd | bda | bdd )
 define v_asignatura = 'bda'

@@ -395,19 +395,146 @@ FVH: b9229f1809f49831d328db6a74dcdf80502180dfc4324eb6f92459148cb4492f
 
 
 
-#### Segunda parte, validar con CDB$ROOT
+#### Segunda parte, validar desde sqlplus
+
+antes de correr el validador con sqlplus hacer lo siguiente
+
+entrar a PDB$ROOT   = free
+
+dentro de PDB$ROOT ejecutar  **alter pluggable database all save state;**
+
+```shellsession
+[martin@h1-bda-mqr 03]$ sqlplus sys/system1@free as sysdba
+
+sys@free> alter pluggable database all save state;
+
+Pluggable database altered.
+```
+
+Salir y ahora si ejecutar la segunda parte
+
+ejecutar sqlplus /nolog
+
+dentro de sqlplus ejecutar 
+
+```shellsession
+[martin@h1-bda-mqr 03]$ sqlplus /nolog
+
+SQL*Plus: Release 23.0.0.0.0 - Production on Thu Sep 24 14:14:01 2026
+Version 23.8.0.25.04
+
+Copyright (c) 1982, 2025, Oracle.  All rights reserved.
+
+SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
+Help: https://docs.oracle.com/error-help/db/sp2-0734/
+idle> start sv-03-main.sql
+
+```
+
+se mostrará el resultado del segundo validador
+
+```shellsession
+==> Conectando como sysdba para otorgar privilegios a system...
+Connected.
+SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
+Help: https://docs.oracle.com/error-help/db/sp2-0734/
+==> Otorgando privilegio de dbms_crypto en todos los contenedores...
+==> Otorgando privilegio de select any dictionary en todos los contenedores...
+==> Creando objetos de validación en CDB$ROOT...
+Connected.
+SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
+Help: https://docs.oracle.com/error-help/db/sp2-0734/
+No errors.
+No errors.
+No errors.
+No errors.
+No errors.
+No errors.
+No errors.
+No errors.
+==> Validando en CDB$ROOT...
+
+
+========================================================
+Validación de resultados 📋 (Tomar captura desde aquí).
+========================================================
+Fecha .................... 2026-09-24 14:14:17
+Usuario OS ............... martin
+Usuario BD ............... SYSTEM
+Hostname ................. h1-bda-mqr.fi.unam
+Contenedor ............... CDB$ROOT
+Asignatura ............... bda
+Semestre .................. 2027-1
+Práctica .................. 03
+PDB mqrbda_s1 ............... con_id=3, open_time=24/09/2026 14:07:53, tamaño=807 MB
+========================================================
+✅ [PASS] 01 - Conexión aterrizó en el contenedor esperado (CDB$ROOT): con_name = CDB$ROOT
+✅ [PASS] 02 - La base de datos es una CDB (arquitectura Multitenant): v$database.cdb = YES
+✅ [PASS] 03 - Juego de caracteres de la CDB: NLS_CHARACTERSET = AL32UTF8
+✅ [PASS] 04 - Juego de caracteres nacional de la CDB: NLS_NCHAR_CHARACTERSET = AL16UTF16
+✅ [PASS] 05 - Modo de apertura de la PDB mqrbda_s1: open_mode = READ WRITE
+✅ [PASS] 06 - Estado persistente (save state) de la PDB mqrbda_s1: Estado OPEN guardado correctamente
+✅ [PASS] 07 - Usuario del sistema operativo distinto a root y oracle: Usuario de ejecución: martin
+
+
+🏆 RESUMEN: 7/7 validaciones correctas
+FVH: 2621dfeaa3c42d33d60e124efa75560c14609fb2ab9772a345db7e039e259db8
+==============: Fin de captura :=======================
+
+
+==> Limpiando objetos de validación en CDB$ROOT...
+==> Conectando a mqrbda_s1 vía alias de servicio...
+Connected.
+SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
+Help: https://docs.oracle.com/error-help/db/sp2-0734/
+==> Creando objetos de validación en mqrbda_s1..
+No errors.
+No errors.
+No errors.
+No errors.
+No errors.
+No errors.
+No errors.
+No errors.
+==> Validando desde mqrbda_s1..
+
+
+========================================================
+Validación de resultados 📋 (Tomar captura desde aquí).
+========================================================
+Fecha .................... 2026-09-24 14:14:18
+Usuario OS ............... martin
+Usuario BD ............... SYSTEM
+Hostname ................. h1-bda-mqr.fi.unam
+Contenedor ............... MQRBDA_S1
+Asignatura ............... bda
+Semestre .................. 2027-1
+Práctica .................. 03
+PDB mqrbda_s1 ............... con_id=3, open_time=24/09/2026 14:07:53, tamaño=807 MB
+========================================================
+✅ [PASS] 01 - Conexión aterrizó en el contenedor esperado (mqrbda_s1): con_name = MQRBDA_S1
+✅ [PASS] 02 - Modo de apertura de la PDB mqrbda_s1: open_mode = READ WRITE
+
+
+🏆 RESUMEN: 2/2 validaciones correctas
+FVH: 8135a2f32761b8ee6a64ddaad04b7796c097f177aacb83c3ffd09f5044fd447c
+==============: Fin de captura :=======================
+
+
+==> Limpiando objetos de validación en CDB$ROOT...
+
+Disconnected from Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
+Version 23.8.0.25.04
+
+```
 
 
 
+## Interactuar con herramientas gráficas
 
+ hasta ahora para usar la BD hay que entrar al contenedor y posteriormente usar sqlplus
 
-#### Tercera parte, validar con MQRBDA_S1
-
-
-
-
-
-
+vamos a acceder a nuestra BD desde la maquina host
 
 
 
