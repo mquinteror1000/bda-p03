@@ -536,29 +536,43 @@ Version 23.8.0.25.04
 
 vamos a acceder a nuestra BD desde la maquina host
 
+Instalar visual studio code
+
+```bash
+ sudo apt install snapd
+ sudo snap install core
+ sudo snap install code --classic
+```
+
+Ya en code en el menu; view -> extensions . Buscar Oracle Sqldeveloper
+
+![](images/2026-09-24-15-44-28-image.png)
 
 
 
+Una vez instalado
+
+![](images/2026-09-24-15-49-16-image.png)
 
 
 
+ejemplo de conexión para mqrbda_s1.fi.unam
+
+![](images/2026-09-24-15-58-14-image.png)
+
+abrir una nueva hoja de trabajo
+
+![](images/2026-09-24-16-00-15-image.png)
 
 
 
+para una consulta sencilla
 
+![](images/2026-09-24-16-01-23-image.png)
 
+resultado
 
-
-
-
-
-
-
-
-
-
-
-
+![](images/2026-09-24-16-01-42-image.png)
 
 
 
