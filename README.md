@@ -30,7 +30,7 @@ Se usarán para guardar los archivos de la base de datos **(datafiles, redo logs
 | bda     | mqr       | c1-bda-mqr | bda_network | 172.22.0.0/16 | 172.22.0.11 | 1522:1521        |
 | bda     | mqr       | c1-bda-mqr | bdd_network | 172.23.0.0/16 | 172.22.0.11 | 1523:1521        |
 
-Editar **/unam/bda/practicas/03/debian/02-crea-red-docker-EDIT.sh**
+Editar **/unam/bda/practicas/03/debian/01-crea-red-docker-EDIT.sh**
 
 ```bash
 ## modificar
@@ -39,10 +39,10 @@ INICIALES="mqr"
 BASE_IMAGE="ol-mqr:1.0"
 ```
 
-ejecutar **/unam/bda/practicas/03/debian/02-crea-red-docker-EDIT.sh**
+ejecutar **/unam/bda/practicas/03/debian/01-crea-red-docker-EDIT.sh**
 
 ```shellsession
-martin@pc-bda-mqr:/unam/bda/practicas/03/debian$ sh 02-crea-red-docker-EDIT.sh 
+martin@pc-bda-mqr:/unam/bda/practicas/03/debian$ sh 01-crea-red-docker-EDIT.sh 
 La red 'bda_network' no existe. Creándola...
 8b63fbd100d9c81e45e7887aef4ccf96f4282c7f94c863d29f228c94acc23113
 Red 'bda_network' creada exitosamente.
@@ -171,3 +171,54 @@ The command completed successfully
 ```
 
 #### Crear una CDB modo no interactivo
+
+editar el script **/unam/bda/practicas/03/debian/container/05-crea-cdb-silent-oracle-EDIT.sh**
+
+```bash
+#editar
+PDBNAME="mqrbda"
+NUMBEROFPDBS=1
+```
+
+ejecutar el script **/unam/bda/practicas/03/debian/container/05-crea-cdb-silent-oracle-EDIT.sh**
+
+```shellsession
+[oracle@h1-bda-mqr container]$ sh 05-crea-cdb-silent-oracle-EDIT.sh 
+==> Creando CDB Oracle Free en modo silencioso
+==> Verificando que el usuario actual sea 'oracle'...
+==> Usuario verificado. Iniciando creación de la CDB...
+[...]
+32% complete
+36% complete
+39% complete
+42% complete
+[...]
+Look at the log file "/opt/oracle/cfgtoollogs/dbca/free/free.log" for further details.
+==> CDB Oracle Free creada correctamente.
+```
+
+que emoción, vamos a ver si funciona
+
+```shellsession
+[oracle@h1-bda-mqr container]$ export ORACLE_SID=free
+[oracle@h1-bda-mqr container]$ sqlplus / as sysdba
+
+SQL*Plus: Release 23.0.0.0.0 - Production on Wed Sep 23 20:08:43 2026
+Version 23.8.0.25.04
+
+Copyright (c) 1982, 2025, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
+Version 23.8.0.25.04
+
+SQL> show con_name;
+
+CON_NAME
+------------------------------
+CDB$ROOT
+
+```
+
+podemos continuar
