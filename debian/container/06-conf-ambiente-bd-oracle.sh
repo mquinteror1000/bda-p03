@@ -10,8 +10,6 @@ cat << EOF > ${GLOGIN}
 
 define _editor=vim
 
-echo "hecho personalizar el prompt de sqlplus"
-
 --personalizar el prompt
 define prompt_value=idle
 col prompt_name new_value prompt_value
