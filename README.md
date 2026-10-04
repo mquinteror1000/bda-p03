@@ -1,10 +1,6 @@
-# bda-p03
+# bda-p03 podman
 
 Práctica 03 de BDA
-
-## Objetivo:
-
-Conocer y poner en práctica las actividades requeridas para crear una base de datos contenedora (CDB) con al menos una pluggable database (PDB).
 
 #### Novedades
 
@@ -30,32 +26,28 @@ Se usarán para guardar los archivos de la base de datos **(datafiles, redo logs
 | bda     | mqr       | c1-bda-mqr | bda_network | 172.22.0.0/16 | 172.22.0.11 | 1522:1521        |
 | bda     | mqr       | c1-bda-mqr | bdd_network | 172.23.0.0/16 | 172.22.0.11 | 1523:1521        |
 
-Editar **/unam/bda/practicas/03/debian/01-crea-red-docker-EDIT.sh**
+## host/01-crea-red-docker-HOST-EDIT.sh
+
+Crea una red de docker para la materia de BDA  y un contenedor en esa red
+
+Editar 
 
 ```bash
-## modificar
+NETWORK_NAME="bda_network"
 MATERIA="bda"
-INICIALES="mqr"
-BASE_IMAGE="ol-mqr:1.0"
 ```
 
-ejecutar **/unam/bda/practicas/03/debian/01-crea-red-docker-EDIT.sh**
+Ejecutar
 
 ```shellsession
-martin@pc-bda-mqr:/unam/bda/practicas/03/debian$ sh 01-crea-red-docker-EDIT.sh 
-La red 'bda_network' no existe. Creándola...
-8b63fbd100d9c81e45e7887aef4ccf96f4282c7f94c863d29f228c94acc23113
-Red 'bda_network' creada exitosamente.
-NETWORK ID     NAME          DRIVER    SCOPE
-8b63fbd100d9   bda_network   bridge    local
-4cc6ace72434   bridge        bridge    local
-84c99b0c8c8f   host          host      local
-8183d308cccf   none          null      local
+martin@pc-bdx-mqr:/unam/bda/practicas/03/host$ sh 01-crea-contenedor-HOST-EDIT.sh 
 ```
 
-### Crear el contenedor
+[salida: 01-crea-contenedor-HOST-EDIT.sh](ejecucion/01-crea-contenedor-HOST-EDIT.sh.md)
 
-editar **/unam/bda/practicas/03/debian/02-crea-contenedor-EDIT.sh**
+## host/02-crea-contenedor-EDIT.sh
+
+editar 
 
 ```bash
 ## modificar
@@ -68,13 +60,6 @@ ejecutar **/unam/bda/practicas/03/debian/02-crea-contenedor-EDIT.sh**
 
 ```shellsession
 martin@pc-bda-mqr:/unam/bda/practicas/03/debian$ sh 02-crea-contenedor-EDIT.sh 
-NETWORK_NAME: bda_network
-VOLUME_NAME: v1-bda-oradata-mqr
-v1-bda-oradata-mqr
-CONTAINER_NAME: c1-bda-mqr
-HOSTNAME: h1-bda-mqr.fi.unam
-UNAM_HOME: /unam
-bash-5.1#
 ```
 
 Si todo esta correcto entrega una shell del nuevo contenedor. SAlir de este
@@ -153,7 +138,6 @@ ASIGNATURA="bda"
 Cambiar al usuario **oracle** con **su -l oracle** y  ejecutar el script  **/unam/bda/practicas/03/debian/container/04-crea-listener-EDIT.sh**
 
 ```shellsession
-
 [martin@h1-bda-mqr container]$ su -l oracle
 Password: 
 Last login: Tue Sep 22 19:55:40 CST 2026 on pts/1
@@ -172,15 +156,11 @@ Listening Endpoints Summary...
 The listener supports no services
 The command completed successfully
 ==> Listener creado y en ejecución correctamente.
-
-
 ```
 
 #### Crear una CDB modo no interactivo
 
 Este script crea una CDB con la primera PDB
-
-
 
 editar el script **/unam/bda/practicas/03/debian/container/05-crea-cdb-silent-oracle-EDIT.sh**
 
@@ -191,7 +171,6 @@ NUMBEROFPDBS=1
 # si fuera bdd
 #NUMBEROFPDBS=2
 #PDBNAME="mqrbdd_s"
-
 ```
 
 ejecutar el script **/unam/bda/practicas/03/debian/container/05-crea-cdb-silent-oracle-EDIT.sh**
@@ -232,7 +211,6 @@ SQL> show con_name;
 CON_NAME
 ------------------------------
 CDB$ROOT
-
 ```
 
 podemos continuar
@@ -259,8 +237,6 @@ Connecting to database
 [...]
 Database deletion completed.
 ```
-
-
 
 ## Configuración de alias y tnsnames
 
@@ -321,10 +297,10 @@ Iniciando la instancia...
 ORACLE instance started.
 
 Total System Global Area 1603287928 bytes
-Fixed Size		    4922232 bytes
-Variable Size		  452984832 bytes
-Database Buffers	 1140850688 bytes
-Redo Buffers		    4530176 bytes
+Fixed Size            4922232 bytes
+Variable Size          452984832 bytes
+Database Buffers     1140850688 bytes
+Redo Buffers            4530176 bytes
 Database mounted.
 Database opened.
 Cambiando al usuario admin
@@ -350,7 +326,6 @@ Version 23.8.0.25.04
 SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
 Help: https://docs.oracle.com/error-help/db/sp2-0734/
 sys@mqrbda_s1> 
-
 ```
 
 ## Validador
@@ -390,10 +365,7 @@ Práctica .......................... 03
 🏆 RESUMEN: 13/13 validaciones correctas
 FVH: b9229f1809f49831d328db6a74dcdf80502180dfc4324eb6f92459148cb4492f
 ================== : Fin de captura : =======================
-
 ```
-
-
 
 #### Segunda parte, validar desde sqlplus
 
@@ -439,7 +411,6 @@ Copyright (c) 1982, 2025, Oracle.  All rights reserved.
 SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
 Help: https://docs.oracle.com/error-help/db/sp2-0734/
 idle> start sv-03-main.sql
-
 ```
 
 se mostrará el resultado del segundo validador
@@ -536,10 +507,7 @@ FVH: 8135a2f32761b8ee6a64ddaad04b7796c097f177aacb83c3ffd09f5044fd447c
 
 Disconnected from Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
 Version 23.8.0.25.04
-
 ```
-
-
 
 ## Interactuar con herramientas gráficas
 
@@ -559,13 +527,9 @@ Ya en code en el menu; view -> extensions . Buscar Oracle Sqldeveloper
 
 ![](images/2026-09-24-15-44-28-image.png)
 
-
-
 Una vez instalado
 
 ![](images/2026-09-24-15-49-16-image.png)
-
-
 
 ejemplo de conexión para mqrbda_s1.fi.unam
 
@@ -575,8 +539,6 @@ abrir una nueva hoja de trabajo
 
 ![](images/2026-09-24-16-00-15-image.png)
 
-
-
 para una consulta sencilla
 
 ![](images/2026-09-24-16-01-23-image.png)
@@ -584,19 +546,5 @@ para una consulta sencilla
 resultado
 
 ![](images/2026-09-24-16-01-42-image.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 7
