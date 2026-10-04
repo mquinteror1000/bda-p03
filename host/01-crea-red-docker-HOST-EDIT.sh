@@ -17,7 +17,7 @@ if podman network inspect "$NETWORK_NAME" >/dev/null 2>&1; then
   echo "La red '$NETWORK_NAME' ya existe."
 else
   echo "La red '$NETWORK_NAME' no existe. Creándola..."
-  podman network create --subnet "\(SUBNET" "\)NETWORK_NAME"
+  podman network create --subnet "$SUBNET" "$NETWORK_NAME"
   echo "Red '$NETWORK_NAME' creada exitosamente."
 fi
 

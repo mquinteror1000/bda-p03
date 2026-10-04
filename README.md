@@ -49,18 +49,20 @@ martin@pc-bdx-mqr:/unam/bda/practicas/03/host$ sh 01-crea-contenedor-HOST-EDIT.s
 
 editar 
 
-```bash
-## modificar
+
 MATERIA="bda"
 INICIALES="mqr"
 BASE_IMAGE="ol-mqr:1.0"
-```
 
 ejecutar **/unam/bda/practicas/03/debian/02-crea-contenedor-EDIT.sh**
 
 ```shellsession
 martin@pc-bda-mqr:/unam/bda/practicas/03/debian$ sh 02-crea-contenedor-EDIT.sh 
 ```
+
+[salida: 02-crea-contenedor-EDIT.sh] (ejecucion/02-crea-contenedor-HOST-EDIT.sh.md)
+
+[salida: host/02-crea-contenedor-HOST-EDIT.sh.md ](ejecucion/02-crea-contenedor-HOST-EDIT.sh.md)
 
 Si todo esta correcto entrega una shell del nuevo contenedor. SAlir de este
 
