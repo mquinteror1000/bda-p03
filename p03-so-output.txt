@@ -1,7 +1,7 @@
 =====================================================================
       Validación de resultados 📋 (Tomar captura desde aquí)
 =====================================================================
-Fecha ............................. 2026-09-24 14:02:49
+Fecha ............................. 2026-10-04 17:18:18
 Usuario ........................... martin
 Hostname .......................... h1-bda-mqr.fi.unam
 Asignatura ........................ bda
@@ -25,7 +25,7 @@ Práctica .......................... 03
 ✅ [PASS] 13 - Alias de servicio para la PDB 1: Nombre de servicio encontrado: (SERVICE_NAME = mqrbda_s1.fi.unam)
 
 🏆 RESUMEN: 13/13 validaciones correctas
-FVH: a0fb43cd7d24597ff747f17abee3aa43ffe56861ee506c4c767e651273231749
+FVH: f77162562fe2609067242378b3f58c028ef7c3965eeacb45db1012fa91e5a490
 ================== : Fin de captura : =======================
 
 

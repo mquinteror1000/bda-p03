@@ -49,10 +49,11 @@ martin@pc-bdx-mqr:/unam/bda/practicas/03/host$ sh 01-crea-contenedor-HOST-EDIT.s
 
 editar 
 
-
+```bash
 MATERIA="bda"
 INICIALES="mqr"
 BASE_IMAGE="ol-mqr:1.0"
+```
 
 ejecutar **/unam/bda/practicas/03/debian/02-crea-contenedor-EDIT.sh**
 
@@ -73,33 +74,37 @@ De manera **manual**
 agregar en .bashrc el usuario **/home/martin/.bashrc**
 
 ```bash
-alias dockerBda1='docker start c1-bda-mqr && docker attach c1-bda-mqr'​
-alias dockerBda1T='docker exec -it c1-bda-mqr bash'
+alias dockerBda1='podman container start c1-bda-mqr && podman exec -u root -it c1-bda-mqr bash -l'
+alias dockerBda1T='podman exec -it -u martin c1-bda-mqr bash -l'
 ```
 
 probar
 
 ```shellsession
-martin@pc-bda-mqr:~$ su -l martin
-Password:
-martin@pc-bda-mqr:~$ dockerBda1
+martin@pc-bdx-mqr:~$ podman container start c1-bda-mqr
 c1-bda-mqr
-bash-5.1# ls /unam/
-bda  bdd
+martin@pc-bdx-mqr:~$ dockerBda1T
+[martin@h1-bda-mqr /]$ 
 ```
 
-## Configurar contenedor
+También
 
-#### Variables de entorno
+```shellsession
+martin@pc-bdx-mqr:~$ dockerBda1
+c1-bda-mqr
+[root@h1-bda-mqr /]# 
+```
+
+## container/03-permisos-variables-EDIT.sh
 
 Se agregan las variables de entorno necesarias en /etc/profile.d/99-custom-env.sh
 
 También se cambia el propietario del folder ${ORACLE_HOME}/oradata
 
-modificar **/unam/bda/practicas/03/debian/container/03-permisos-variables-EDIT.sh**
+Editar
 
 ```bash
-## modificar
+#EDITAR
 MATERIA="bda"
 INICIALES="mqr"
 ORACLE_VERSION="23ai"
@@ -107,26 +112,13 @@ ORACLE_SID="free"
 UNAM_HOME="/unam"
 ```
 
-Ejecutar **/unam/bda/practicas/03/debian/container/03-permisos-variables-EDIT.sh**
+Ejecutar **/container/03-permisos-variables-EDIT.sh**
 
 ```shellsession
 [martin@h1-bda-mqr container]$ sudo sh 03-permisos-variables-EDIT.sh 
-CONTAINER_NAME: c1-bda-mqr
-HOSTNAME: h1-bda-mqr.fi.unam
-El directorio /opt/oracle/oradata ya pertenece a oracle:oinstall. Continuando...
-Contenido actual de /etc/profile.d/99-custom-env.sh
-
-# Variables de entorno Oracle - generadas automáticamente
-export UNAM_HOME=/unam
-export ORACLE_HOSTNAME=c1-bda-mqr
-export ORACLE_BASE=/opt/oracle
-export ORACLE_HOME=/opt/oracle/product/23ai/dbhomeFree
-export ORA_INVENTORY=/opt/oracle/oraInventory
-export ORACLE_SID=free
-export NLS_LANG=American_America.AL32UTF8
-export PATH=${ORACLE_HOME}/bin:$PATH
-export LD_LIBRARY_PATH=${ORACLE_HOME}/lib:${LD_LIBRARY_PATH}
 ```
+
+[salida](ejecucion/03-permisos-variables-root-EDIT.sh.md)
 
 #### Crear un listener modo no interactivo
 
@@ -527,7 +519,7 @@ Instalar visual studio code
 
 Ya en code en el menu; view -> extensions . Buscar Oracle Sqldeveloper
 
-![](images/2026-09-24-15-44-28-image.png)
+![loading-ag-870](images/2026-09-24-15-44-28-image.png)
 
 Una vez instalado
 

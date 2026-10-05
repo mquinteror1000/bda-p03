@@ -1,6 +1,5 @@
 #!/bin/sh
-
-## modificar
+#EDITAR
 MATERIA="bda"
 INICIALES="mqr"
 ORACLE_VERSION="23ai"
@@ -9,7 +8,7 @@ UNAM_HOME="/unam"
 
 # Verificar que el script se esté ejecutando con privilegios de root
 if [ "$(id -u)" -ne 0 ]; then
-    echo "Alto. Este script debe ejecutarse con privilegios de sudo"
+    echo "Alto. Este script debe ejecutarse con sudo o como root"
     echo "Ejecutar así: sudo sh $0"
     exit 1
 fi

@@ -24,8 +24,12 @@ fi
 
 VOLUME_NAME="v1-${MATERIA}-oradata-${INICIALES}"
 
-podman volume rm "${VOLUME_NAME}"
-podman volume create "${VOLUME_NAME}"
+# Verifica si el volumen existe antes de crearlo para no borrar datos
+if podman volume inspect "${VOLUME_NAME}" >/dev/null 2>&1; then
+  echo "[podaman] El volumen '${VOLUME_NAME}' ya existe. Borrar manualmente si no se quiere usar"
+else
+  podman volume create "${VOLUME_NAME}"
+fi
 
 CONTAINER_NAME="c1-${MATERIA}-${INICIALES}"
 
@@ -51,6 +55,6 @@ podman run -it \
   --hostname "${HOSTNAME}" \
   --network "${NETWORK_NAME}" \
   --ip "${IP_DIR}" \
-  --expose 1521 \
+  -p 1522:1521 \
   --shm-size=2gb \
   "${BASE_IMAGE}" bash
