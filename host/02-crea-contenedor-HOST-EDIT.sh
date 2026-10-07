@@ -4,23 +4,9 @@ MATERIA='bda'
 INICIALES='mqr'
 BASE_IMAGE='ol-mqr:1.0'
 
-## verificar que hay una subred para esa materia
-if [ "$MATERIA" != "bda" ] && [ "$MATERIA" != "bdd" ]; then
-  echo "Error: La materia '$MATERIA' no tiene una subred asignada."
-  exit 1
-fi
-
 NETWORK_NAME="${MATERIA}_network"
 
-# dirección IP
-if [ "$MATERIA" = "bda" ]; then
-  IP_DIR="172.22.0.11"
-elif [ "$MATERIA" = "bdd" ]; then
-  IP_DIR="172.23.0.11"
-else
-  echo "Error: dirección IP - ni bda ni bdd"
-  exit 1
-fi
+IP_DIR="172.22.0.11"
 
 VOLUME_NAME="v1-${MATERIA}-oradata-${INICIALES}"
 
