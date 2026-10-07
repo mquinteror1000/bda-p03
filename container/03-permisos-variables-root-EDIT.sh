@@ -13,19 +13,9 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-## verificar que hay una subred para esa materia
-if [ "$MATERIA" != "bda" ] && [ "$MATERIA" != "bdd" ]; then
-    echo "Error: La materia '$MATERIA' no tiene una subred asignada."
-    exit 1
-fi
-
-# Nombre del contenedor
 CONTAINER_NAME="c1-${MATERIA}-${INICIALES}"
-echo "CONTAINER_NAME: ${CONTAINER_NAME}"
 
-## Nombre de host
 HOSTNAME="h1-${MATERIA}-${INICIALES}.fi.unam"
-echo "HOSTNAME: ${HOSTNAME}"
 
 ## Verificar o cambiar permisos de /opt/oracle/oradata
 ORADATA_DIR="/opt/oracle/oradata"
