@@ -140,24 +140,7 @@ ASIGNATURA="bda"
 Cambiar al usuario **oracle** con **su -l oracle** y  ejecutar el script  **/unam/bda/practicas/03/debian/container/04-crea-listener-EDIT.sh**
 
 ```shellsession
-[martin@h1-bda-mqr container]$ su -l oracle
-Password: 
-Last login: Tue Sep 22 19:55:40 CST 2026 on pts/1
-[oracle@h1-bda-mqr ~]$ cd /unam/bda/practicas/03/debian/container/
 [oracle@h1-bda-mqr container]$ sh 04-crea-listener-EDIT.sh 
-==> Creando listener de Oracle en modo silencioso
-==> Verificando que el usuario actual sea 'oracle'...
-==> Verificando la existencia del archivo de respuestas /unam/bda/practicas/03/debian/container/listener_silet.rsp...
-==> Creando listener con archivo de respuestas /unam/bda/practicas/03/debian/container/listener_silet.rsp
-[...]
-==> Verificando el status del listener...
-[...]
-Listening Endpoints Summary...
-  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=h1-bda-mqr.fi.unam)(PORT=1521)))
-  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
-The listener supports no services
-The command completed successfully
-==> Listener creado y en ejecución correctamente.
 ```
 
 #### Crear una CDB modo no interactivo
@@ -227,17 +210,6 @@ dbca -silent -deleteDatabase -sourceDB FREE
 
 ```shellsession
 [oracle@h1-bda-mqr container]$ dbca -silent -deleteDatabase -sourceDB FREE
-Enter SYS user password: 
-
-[WARNING] [DBT-11503] The instance (FREE) is not running on the local node. This may result in partial delete of Oracle database.
-   CAUSE: A locally running instance is required for complete deletion of Oracle database instance and database files.
-   ACTION: Specify a locally running database, or execute DBCA on a node where the database instance is running.
-[WARNING] [DBT-19202] The Database Configuration Assistant will delete the Oracle instances and datafiles for your database. All information in the database will be destroyed.
-Prepare for db operation
-32% complete
-Connecting to database
-[...]
-Database deletion completed.
 ```
 
 ## Configuración de alias y tnsnames
@@ -260,9 +232,6 @@ ejecutarlo
 
 ```shellsession
 [martin@h1-bda-mqr container]$ sudo sh 07-alias-tnsnames-root-EDIT.sh 
-alias sqlplus='rlwrap sqlplus' ya existe en /etc/profile.d/99-custom-env.sh No se hicieron cambios.
-escrito en nombre de servicio [mqrbda_s1] en el archivo /opt/oracle/product/23ai/dbhomeFree/network/admin/tnsnames.ora
-ahora se vale conectarse asi sqlplus sys@mqrbda_s1 as sysdba despues de iniciar listener y la cdb
 ```
 
 ## Script para levantar rápido Listener e instancia
@@ -281,7 +250,7 @@ darle privilegios de ejecución
 y con **sudo**  copiarlo/moverlo a **/usr/bin** preferiblemente sin extensión asi **/usr/bin/launch**
 
 ```shellsession
-[martin@h1-bda-mqr container]$ sudo mv launch.sh /usr/bin/launch
+[martin@h1-bda-mqr container]$ sudo mv launch-EDIT.sh /usr/bin/launch
 [martin@h1-bda-mqr container]$ chmod +x /usr/bin/launch
 ```
 
@@ -314,68 +283,25 @@ y podemos acceder a nuestr pdb de manera directa con sqlplus
 
 ```shellsession
 [martin@h1-bda-mqr ~]$ sqlplus sys/system1@mqrbda_s1 as sysdba
-
-SQL*Plus: Release 23.0.0.0.0 - Production on Thu Sep 24 13:48:07 2026
-Version 23.8.0.25.04
-
-Copyright (c) 1982, 2025, Oracle.  All rights reserved.
-
-
-Connected to:
-Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
-Version 23.8.0.25.04
-
-SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
-Help: https://docs.oracle.com/error-help/db/sp2-0734/
+[...]
 sys@mqrbda_s1> 
 ```
 
-## Validador
+# Validador
 
-Primer parte en el Host
+## Parte 1
 
 ejecutar  **/unam/bda/practicas/03/runval01.sh**
 
 ```shellsession
 [martin@h1-bda-mqr 03]$ sh runval01.sh 
-=====================================================================
-      Validación de resultados 📋 (Tomar captura desde aquí)
-=====================================================================
-Fecha ............................. 2026-09-24 13:52:39
-Usuario ........................... martin
-Hostname .......................... h1-bda-mqr.fi.unam
-Asignatura ........................ bda
-Semestre .......................... 2027-1
-Práctica .......................... 03
-=====================================================================
-
-
-✅ [PASS] 01 - Uso de un contenedor Docker: Uso de un contenedor Docker correcto
-✅ [PASS] 02 - Usuario de ejecución distinto a oracle y root: Usuario de ejecución: martin
-✅ [PASS] 03 - Variables de entorno definidas en /etc/profile.d/99-custom-env.sh: Correcto.
-✅ [PASS] 04 - Variable ORACLE_HOSTNAME: ORACLE_HOSTNAME: h1-bda-mqr.fi.unam
-✅ [PASS] 05 - Variable ORACLE_SID: ORACLE_SID: free
-✅ [PASS] 06 - Variable NLS_LANG: NLS_LANG: American_America.AL32UTF8
-✅ [PASS] 07 - Status del listener: Status READY encontrado para el listener
-✅ [PASS] 08 - Permisos de glogin.sql: Permisos de glogin.sql: -rwxr-xr-x
-✅ [PASS] 09 - Configuración del editor en glogin.sql: Editor configurado: define _editor=vim
-✅ [PASS] 10 - Personalización del prompt en glogin.sql: Prompt configurado: set sqlprompt '&prompt_value> '
-✅ [PASS] 11 - Permisos de tnsnames.ora: Permisos de tnsnames.ora: -rwxr-xr-x
-✅ [PASS] 12 - Alias de sqlplus con rlwrap: Alias configurado: alias sqlplus=rlwrap sqlplus
-✅ [PASS] 13 - Alias de servicio para la PDB 1: Nombre de servicio encontrado: (SERVICE_NAME = mqrbda_s1.fi.unam)
-
-🏆 RESUMEN: 13/13 validaciones correctas
-FVH: b9229f1809f49831d328db6a74dcdf80502180dfc4324eb6f92459148cb4492f
-================== : Fin de captura : =======================
 ```
 
-#### Segunda parte, validar desde sqlplus
+[salida](ejecucion/runval01.sh.md)
 
-antes de correr el validador con sqlplus hacer lo siguiente
+## Parte 2
 
-entrar a PDB$ROOT   = free
-
-dentro de PDB$ROOT ejecutar  **alter pluggable database all save state;**
+Antes en SQLplus haer ..
 
 ```shellsession
 [martin@h1-bda-mqr 03]$ sqlplus sys/system1@free as sysdba
@@ -385,9 +311,7 @@ sys@free> alter pluggable database all save state;
 Pluggable database altered.
 ```
 
-Modificar el script del profesor **/unam/bda/practicas/03/sv-03-main.sql**
-
-para agregar los datos solicitados
+Modificar el script del profesor **/unam/bda/practicas/03/sv-03-main.sql**  
 
 ```sql
 --Password de sys/system (mismo para ambos en el curso)
@@ -408,99 +332,7 @@ este script autentica en sqlplus y corre el script validador de sql
 
 se mostrará el resultado del segundo validador
 
-```shellsession
-==> Conectando como sysdba para otorgar privilegios a system...
-Connected.
-SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
-Help: https://docs.oracle.com/error-help/db/sp2-0734/
-==> Otorgando privilegio de dbms_crypto en todos los contenedores...
-==> Otorgando privilegio de select any dictionary en todos los contenedores...
-==> Creando objetos de validación en CDB$ROOT...
-Connected.
-SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
-Help: https://docs.oracle.com/error-help/db/sp2-0734/
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-==> Validando en CDB$ROOT...
-
-
-========================================================
-Validación de resultados 📋 (Tomar captura desde aquí).
-========================================================
-Fecha .................... 2026-09-24 14:14:17
-Usuario OS ............... martin
-Usuario BD ............... SYSTEM
-Hostname ................. h1-bda-mqr.fi.unam
-Contenedor ............... CDB$ROOT
-Asignatura ............... bda
-Semestre .................. 2027-1
-Práctica .................. 03
-PDB mqrbda_s1 ............... con_id=3, open_time=24/09/2026 14:07:53, tamaño=807 MB
-========================================================
-✅ [PASS] 01 - Conexión aterrizó en el contenedor esperado (CDB$ROOT): con_name = CDB$ROOT
-✅ [PASS] 02 - La base de datos es una CDB (arquitectura Multitenant): v$database.cdb = YES
-✅ [PASS] 03 - Juego de caracteres de la CDB: NLS_CHARACTERSET = AL32UTF8
-✅ [PASS] 04 - Juego de caracteres nacional de la CDB: NLS_NCHAR_CHARACTERSET = AL16UTF16
-✅ [PASS] 05 - Modo de apertura de la PDB mqrbda_s1: open_mode = READ WRITE
-✅ [PASS] 06 - Estado persistente (save state) de la PDB mqrbda_s1: Estado OPEN guardado correctamente
-✅ [PASS] 07 - Usuario del sistema operativo distinto a root y oracle: Usuario de ejecución: martin
-
-
-🏆 RESUMEN: 7/7 validaciones correctas
-FVH: 2621dfeaa3c42d33d60e124efa75560c14609fb2ab9772a345db7e039e259db8
-==============: Fin de captura :=======================
-
-
-==> Limpiando objetos de validación en CDB$ROOT...
-==> Conectando a mqrbda_s1 vía alias de servicio...
-Connected.
-SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
-Help: https://docs.oracle.com/error-help/db/sp2-0734/
-==> Creando objetos de validación en mqrbda_s1..
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-==> Validando desde mqrbda_s1..
-
-
-========================================================
-Validación de resultados 📋 (Tomar captura desde aquí).
-========================================================
-Fecha .................... 2026-09-24 14:14:18
-Usuario OS ............... martin
-Usuario BD ............... SYSTEM
-Hostname ................. h1-bda-mqr.fi.unam
-Contenedor ............... MQRBDA_S1
-Asignatura ............... bda
-Semestre .................. 2027-1
-Práctica .................. 03
-PDB mqrbda_s1 ............... con_id=3, open_time=24/09/2026 14:07:53, tamaño=807 MB
-========================================================
-✅ [PASS] 01 - Conexión aterrizó en el contenedor esperado (mqrbda_s1): con_name = MQRBDA_S1
-✅ [PASS] 02 - Modo de apertura de la PDB mqrbda_s1: open_mode = READ WRITE
-
-
-🏆 RESUMEN: 2/2 validaciones correctas
-FVH: 8135a2f32761b8ee6a64ddaad04b7796c097f177aacb83c3ffd09f5044fd447c
-==============: Fin de captura :=======================
-
-
-==> Limpiando objetos de validación en CDB$ROOT...
-
-Disconnected from Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
-Version 23.8.0.25.04
-```
+[salida](ejecucion/runval02.sh.md)
 
 ## Interactuar con herramientas gráficas
 
@@ -517,27 +349,3 @@ Instalar visual studio code
 ```
 
 Ya en code en el menu; view -> extensions . Buscar Oracle Sqldeveloper
-
-![loading-ag-870](images/2026-09-24-15-44-28-image.png)
-
-Una vez instalado
-
-![](images/2026-09-24-15-49-16-image.png)
-
-ejemplo de conexión para mqrbda_s1.fi.unam
-
-![](images/2026-09-24-15-58-14-image.png)
-
-abrir una nueva hoja de trabajo
-
-![](images/2026-09-24-16-00-15-image.png)
-
-para una consulta sencilla
-
-![](images/2026-09-24-16-01-23-image.png)
-
-resultado
-
-![](images/2026-09-24-16-01-42-image.png)
-
-7

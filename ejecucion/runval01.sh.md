@@ -1,3 +1,7 @@
+## runval01.sh
+
+```shellsession
+[martin@h1-bda-mqr 03]$ sh runval01.sh 
 =====================================================================
       Validación de resultados 📋 (Tomar captura desde aquí)
 =====================================================================
@@ -27,5 +31,4 @@ Práctica .......................... 03
 🏆 RESUMEN: 13/13 validaciones correctas
 FVH: 6d9ee05fef831542309218309309fe1de1a729fc86b47aec40f74b02721d7add
 ================== : Fin de captura : =======================
-
-
+```

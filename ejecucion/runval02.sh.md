@@ -1,13 +1,19 @@
+## runval02.sh
+
+```shellsession
+[martin@h1-bda-mqr 03]$ sh runval02.sh
+
+SQL*Plus: Release 23.0.0.0.0 - Production on Tue Oct 6 20:12:31 2026
+Version 23.8.0.25.04
+
+Copyright (c) 1982, 2025, Oracle.  All rights reserved.
+
 ==> Conectando como sysdba para otorgar privilegios a system...
 Connected.
-
-
 ==> Otorgando privilegio de dbms_crypto en todos los contenedores...
 ==> Otorgando privilegio de select any dictionary en todos los contenedores...
 ==> Creando objetos de validación en CDB$ROOT...
 Connected.
-
-
 No errors.
 No errors.
 No errors.
@@ -49,8 +55,6 @@ FVH: badfbceb775be8081c6b9435c59cbe682118631dafd49ef31c5a623a20a3e315
 ==> Limpiando objetos de validación en CDB$ROOT...
 ==> Conectando a mqrbda_s1 vía alias de servicio...
 Connected.
-
-
 ==> Creando objetos de validación en mqrbda_s1..
 No errors.
 No errors.
@@ -86,4 +90,7 @@ FVH: ae680091c549a1bd1f357d13ba2042bb1c87f79b69da6576aedc79093d6e825f
 
 
 ==> Limpiando objetos de validación en CDB$ROOT...
-CHK:2af164ba81d5b14001a66e333bbe884fa089726c2e75a073a2e850165a9058c5
+
+Disconnected from Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
+Version 23.8.0.25.04
+```
