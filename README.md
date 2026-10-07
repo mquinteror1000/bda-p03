@@ -24,7 +24,7 @@ Se usarán para guardar los archivos de la base de datos **(datafiles, redo logs
 | materia | iniciales | contenedor | network     | subnet        | dirección   | puerto publicado |
 | ------- | --------- | ---------- | ----------- | ------------- | ----------- | ---------------- |
 | bda     | mqr       | c1-bda-mqr | bda_network | 172.22.0.0/16 | 172.22.0.11 | 1522:1521        |
-| bda     | mqr       | c1-bda-mqr | bdd_network | 172.23.0.0/16 | 172.22.0.11 | 1523:1521        |
+| bdd     | mqr       | c1-bda-mqr | bdd_network | 172.23.0.0/16 | 172.22.0.11 | 1523:1521        |
 
 ## host/01-crea-red-docker-HOST-EDIT.sh
 
@@ -63,7 +63,7 @@ martin@pc-bda-mqr:/unam/bda/practicas/03/debian$ sh 02-crea-contenedor-EDIT.sh
 
 [salida: 02-crea-contenedor-EDIT.sh] (ejecucion/02-crea-contenedor-HOST-EDIT.sh.md)
 
-[salida: host/02-crea-contenedor-HOST-EDIT.sh.md ](ejecucion/02-crea-contenedor-HOST-EDIT.sh.md)
+[salida](ejecucion/02-crea-contenedor-HOST-EDIT.sh.md)
 
 Si todo esta correcto entrega una shell del nuevo contenedor. SAlir de este
 
