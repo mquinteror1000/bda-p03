@@ -1,6 +1,4 @@
 #!/bin/bash
-
-## modificar
 NETWORK_NAME="bda_network"
 MATERIA="bda"
 
