@@ -1,7 +1,6 @@
 #!/bin/bash
 # basado en el scrip del profesor
-# editar
-ASIGNATURA="bda"
+ASIGNATURA='bda'
 
 #Crea un listener de Oracle en modo silencioso
 echo "==> Creando listener de Oracle en modo silencioso"

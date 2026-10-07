@@ -7,7 +7,7 @@
 
 ## -- Este script se llama: start-cdb.sh
 #editar
-ADMINUSER="martin"
+ADMINUSER='alicia'
 
 if [ "$(whoami)" != "root" ]; then
   echo "ERROR: este script debe ejecutarse como el usuario root"

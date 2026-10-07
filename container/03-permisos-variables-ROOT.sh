@@ -1,11 +1,9 @@
 #!/bin/sh
-
-## modificar
-MATERIA="bda"
-INICIALES="mqr"
-ORACLE_VERSION="23ai"
-ORACLE_SID="free"
-UNAM_HOME="/unam"
+MATERIA='bda'
+INICIALES='agn'
+ORACLE_VERSION='23ai'
+ORACLE_SID='free'
+UNAM_HOME='/unam'
 
 # Verificar que el script se esté ejecutando con privilegios de root
 if [ "$(id -u)" -ne 0 ]; then
@@ -14,19 +12,8 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-## verificar que hay una subred para esa materia
-if [ "$MATERIA" != "bda" ] && [ "$MATERIA" != "bdd" ]; then
-    echo "Error: La materia '$MATERIA' no tiene una subred asignada."
-    exit 1
-fi
-
-# Nombre del contenedor
 CONTAINER_NAME="c1-${MATERIA}-${INICIALES}"
-echo "CONTAINER_NAME: ${CONTAINER_NAME}"
-
-## Nombre de host
 HOSTNAME="h1-${MATERIA}-${INICIALES}.fi.unam"
-echo "HOSTNAME: ${HOSTNAME}"
 
 ## Verificar o cambiar permisos de /opt/oracle/oradata
 ORADATA_DIR="/opt/oracle/oradata"
@@ -46,7 +33,6 @@ else
 fi
 
 ## Crear variables de entorno
-
 ORACLE_BASE="/opt/oracle"
 ORACLE_HOME="${ORACLE_BASE}/product/${ORACLE_VERSION}/dbhomeFree"
 ORA_INVENTORY="${ORACLE_BASE}/oraInventory"

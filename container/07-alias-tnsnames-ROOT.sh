@@ -1,7 +1,6 @@
 #!/bin/sh
-# editar
-MATERIA="bda"
-INICIALES="mqr"
+MATERIA='bda'
+INICIALES='agn'
 
 ARCHIVO="/etc/profile.d/99-custom-env.sh"
 LINEA="alias sqlplus='rlwrap sqlplus'"
