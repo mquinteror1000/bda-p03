@@ -22,7 +22,7 @@ No errors.
 ========================================================
 Validación de resultados 📋 (Tomar captura desde aquí).
 ========================================================
-Fecha .................... 2026-10-04 17:20:02
+Fecha .................... 2026-10-06 20:04:32
 Usuario OS ............... martin
 Usuario BD ............... SYSTEM
 Hostname ................. h1-bda-mqr.fi.unam
@@ -30,7 +30,7 @@ Contenedor ............... CDB$ROOT
 Asignatura ............... bda
 Semestre .................. 2027-1
 Práctica .................. 03
-PDB mqrbda_s1 ............... con_id=3, open_time=04/10/2026 15:10:17, tamaño=827 MB
+PDB mqrbda_s1 ............... con_id=3, open_time=06/10/2026 19:56:47, tamaño=807 MB
 ========================================================
 ✅ [PASS] 01 - Conexión aterrizó en el contenedor esperado (CDB$ROOT): con_name = CDB$ROOT
 ✅ [PASS] 02 - La base de datos es una CDB (arquitectura Multitenant): v$database.cdb = YES
@@ -42,7 +42,7 @@ PDB mqrbda_s1 ............... con_id=3, open_time=04/10/2026 15:10:17, tamaño=8
 
 
 🏆 RESUMEN: 7/7 validaciones correctas
-FVH: cebe97d877cc9a88ef3e601a0bafa6bfa5708b6c973e1b5c037bba694fed64a6
+FVH: 8b3a096586ccf3d9413ae26eafa4b1f92f9c0e4958d1faabe62ef0f671d7d15a
 ==============: Fin de captura :=======================
 
 
@@ -66,7 +66,7 @@ No errors.
 ========================================================
 Validación de resultados 📋 (Tomar captura desde aquí).
 ========================================================
-Fecha .................... 2026-10-04 17:20:03
+Fecha .................... 2026-10-06 20:04:33
 Usuario OS ............... martin
 Usuario BD ............... SYSTEM
 Hostname ................. h1-bda-mqr.fi.unam
@@ -74,16 +74,16 @@ Contenedor ............... MQRBDA_S1
 Asignatura ............... bda
 Semestre .................. 2027-1
 Práctica .................. 03
-PDB mqrbda_s1 ............... con_id=3, open_time=04/10/2026 15:10:17, tamaño=827 MB
+PDB mqrbda_s1 ............... con_id=3, open_time=06/10/2026 19:56:47, tamaño=807 MB
 ========================================================
 ✅ [PASS] 01 - Conexión aterrizó en el contenedor esperado (mqrbda_s1): con_name = MQRBDA_S1
 ✅ [PASS] 02 - Modo de apertura de la PDB mqrbda_s1: open_mode = READ WRITE
 
 
 🏆 RESUMEN: 2/2 validaciones correctas
-FVH: d85a6ad708027de5d58ade6f4abf249dcad3bb7fd5ec35c5b1e8123b9e04b7c0
+FVH: 60bfb0a3e59c0ca4afba03ab3e531d3f99abbdb437b1028e52d58c8c9026e21b
 ==============: Fin de captura :=======================
 
 
 ==> Limpiando objetos de validación en CDB$ROOT...
-CHK:fb5f49200f4d7615142ee4cc0d40765e839cd107f540ec54491c7d91e2d88aad
+CHK:c40dee2ec6f8607b65370a117876ba54681224d4ef0ad9cd8052e77780a01365

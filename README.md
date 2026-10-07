@@ -26,6 +26,14 @@ Se usarán para guardar los archivos de la base de datos **(datafiles, redo logs
 | bda     | mqr       | c1-bda-mqr | bda_network | 172.22.0.0/16 | 172.22.0.11 | 1522:1521        |
 | bdd     | mqr       | c1-bda-mqr | bdd_network | 172.23.0.0/16 | 172.22.0.11 | 1523:1521        |
 
+## Mapeo de puertos
+
+Como se usa podman rootless es necesario realizar mapeo de puertos. el puerto 1521 del container se mapea en el 1522 del host
+
+```shellsession
+14942b10b9f2  localhost/ol-mqr:1.0                            bash                  6 minutes ago   Up 5 minutes            0.0.0.0:1522->1521/tcp                     c1-bda-mqr
+```
+
 ## host/01-crea-red-docker-HOST-EDIT.sh
 
 Crea una red de docker para la materia de BDA  y un contenedor en esa red
@@ -390,21 +398,12 @@ define v_iniciales = 'mqr'
 define v_asignatura = 'bda'
 ```
 
-ejecutar sqlplus /nolog
+## runval-02.sh
 
-dentro de sqlplus ejecutar  el script sql del profesor 
+este script autentica en sqlplus y corre el script validador de sql
 
 ```shellsession
-[martin@h1-bda-mqr 03]$ sqlplus /nolog
-
-SQL*Plus: Release 23.0.0.0.0 - Production on Thu Sep 24 14:14:01 2026
-Version 23.8.0.25.04
-
-Copyright (c) 1982, 2025, Oracle.  All rights reserved.
-
-SP2-0734: unknown command beginning "echo "hech..." - rest of line ignored.
-Help: https://docs.oracle.com/error-help/db/sp2-0734/
-idle> start sv-03-main.sql
+[martin@h1-bda-mqr 03]$ sh runval02.sh 
 ```
 
 se mostrará el resultado del segundo validador
