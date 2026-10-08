@@ -1,7 +1,6 @@
 #!/bin/sh
 # cargar variables de entorno
 . /etc/profile.d/99-custom-env.sh
-#editar
 PDBNAME='agnbda_s1'
 NUMBEROFPDBS=1
 # si fuera bdd

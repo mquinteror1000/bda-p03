@@ -11,7 +11,7 @@ exit 1
 fi
 
 #Ajustar el valor de <asignatura> según corresponda (bd, bda o bdd)
-rsp_file="${UNAM_HOME}/${ASIGNATURA}/practicas/03/debian/container/listener_silet.rsp"
+rsp_file="${UNAM_HOME}/${ASIGNATURA}/practicas/03/container/listener_silet.rsp"
 echo "==> Verificando la existencia del archivo de respuestas $rsp_file..."
 if [ ! -f "$rsp_file" ]; then
 echo "Error: el archivo $rsp_file no se encuentra."
