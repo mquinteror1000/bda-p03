@@ -1,13 +1,19 @@
+## runval02.sh
+
+```shellsession
+[alicia@h1-bda-agn 03]$ sh runval02.sh
+
+SQL*Plus: Release 23.0.0.0.0 - Production on Wed Oct 7 18:57:12 2026
+Version 23.8.0.25.04
+
+Copyright (c) 1982, 2025, Oracle.  All rights reserved.
+
 ==> Conectando como sysdba para otorgar privilegios a system...
 Connected.
-
-
 ==> Otorgando privilegio de dbms_crypto en todos los contenedores...
 ==> Otorgando privilegio de select any dictionary en todos los contenedores...
 ==> Creando objetos de validación en CDB$ROOT...
 Connected.
-
-
 No errors.
 No errors.
 No errors.
@@ -49,8 +55,6 @@ FVH: 9ff0b67d9253ac5b2fdb6705bb8021040ea2a9c3c72a0fa44b707643cfac4d29
 ==> Limpiando objetos de validación en CDB$ROOT...
 ==> Conectando a agnbda_s1 vía alias de servicio...
 Connected.
-
-
 ==> Creando objetos de validación en agnbda_s1..
 No errors.
 No errors.
@@ -86,4 +90,8 @@ FVH: faa274f176d07a3d73fb57bd755b9140ddb171220a03c15d143b7242bbe025f8
 
 
 ==> Limpiando objetos de validación en CDB$ROOT...
-CHK:66a5c7a59793539013ca08d4de6ee2832b97b0c045a99db3169b7af2ea25f474
+
+Disconnected from Oracle Database 23ai Free Release 23.0.0.0.0 - Develop, Learn, and Run for Free
+Version 23.8.0.25.04
+
+```
