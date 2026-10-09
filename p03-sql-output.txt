@@ -1,89 +1,104 @@
 ==> Conectando como sysdba para otorgar privilegios a system...
-Connected.
+ERROR:
+ORA-12162: TNS:net service name is incorrectly specified 
+Help: https://docs.oracle.com/error-help/db/ora-12162/ 
 
 
 ==> Otorgando privilegio de dbms_crypto en todos los contenedores...
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
 ==> Otorgando privilegio de select any dictionary en todos los contenedores...
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
 ==> Creando objetos de validación en CDB$ROOT...
-Connected.
+ERROR:
+ORA-12162: TNS:net service name is incorrectly specified 
+Help: https://docs.oracle.com/error-help/db/ora-12162/ 
 
 
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0641: "SHOW ERRORS" requires connection to server
+Help: https://docs.oracle.com/error-help/db/sp2-0641/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0641: "SHOW ERRORS" requires connection to server
+Help: https://docs.oracle.com/error-help/db/sp2-0641/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0641: "SHOW ERRORS" requires connection to server
+Help: https://docs.oracle.com/error-help/db/sp2-0641/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0641: "SHOW ERRORS" requires connection to server
+Help: https://docs.oracle.com/error-help/db/sp2-0641/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0641: "SHOW ERRORS" requires connection to server
+Help: https://docs.oracle.com/error-help/db/sp2-0641/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0641: "SHOW ERRORS" requires connection to server
+Help: https://docs.oracle.com/error-help/db/sp2-0641/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0641: "SHOW ERRORS" requires connection to server
+Help: https://docs.oracle.com/error-help/db/sp2-0641/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0641: "SHOW ERRORS" requires connection to server
+Help: https://docs.oracle.com/error-help/db/sp2-0641/
 ==> Validando en CDB$ROOT...
-
-
-========================================================
-Validación de resultados 📋 (Tomar captura desde aquí).
-========================================================
-Fecha .................... 2026-10-07 18:57:13
-Usuario OS ............... alicia
-Usuario BD ............... SYSTEM
-Hostname ................. h1-bda-agn.fi.unam
-Contenedor ............... CDB$ROOT
-Asignatura ............... bda
-Semestre .................. 2027-1
-Práctica .................. 03
-PDB agnbda_s1 ............... con_id=3, open_time=07/10/2026 18:50:33, tamaño=807 MB
-========================================================
-✅ [PASS] 01 - Conexión aterrizó en el contenedor esperado (CDB$ROOT): con_name = CDB$ROOT
-✅ [PASS] 02 - La base de datos es una CDB (arquitectura Multitenant): v$database.cdb = YES
-✅ [PASS] 03 - Juego de caracteres de la CDB: NLS_CHARACTERSET = AL32UTF8
-✅ [PASS] 04 - Juego de caracteres nacional de la CDB: NLS_NCHAR_CHARACTERSET = AL16UTF16
-✅ [PASS] 05 - Modo de apertura de la PDB agnbda_s1: open_mode = READ WRITE
-✅ [PASS] 06 - Estado persistente (save state) de la PDB agnbda_s1: Estado OPEN guardado correctamente
-✅ [PASS] 07 - Usuario del sistema operativo distinto a root y oracle: Usuario de ejecución: alicia
-
-
-🏆 RESUMEN: 7/7 validaciones correctas
-FVH: 9ff0b67d9253ac5b2fdb6705bb8021040ea2a9c3c72a0fa44b707643cfac4d29
-==============: Fin de captura :=======================
-
-
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
 ==> Limpiando objetos de validación en CDB$ROOT...
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
 ==> Conectando a agnbda_s1 vía alias de servicio...
-Connected.
+ERROR:
+ORA-12154: Cannot connect to database. Cannot find alias agnbda_s1 in /unam/tns/tnsnames.ora. 
+Help: https://docs.oracle.com/error-help/db/ora-12154/ 
 
 
-==> Creando objetos de validación en agnbda_s1..
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-No errors.
-==> Validando desde agnbda_s1..
 
-
-========================================================
-Validación de resultados 📋 (Tomar captura desde aquí).
-========================================================
-Fecha .................... 2026-10-07 18:57:14
-Usuario OS ............... alicia
-Usuario BD ............... SYSTEM
-Hostname ................. h1-bda-agn.fi.unam
-Contenedor ............... AGNBDA_S1
-Asignatura ............... bda
-Semestre .................. 2027-1
-Práctica .................. 03
-PDB agnbda_s1 ............... con_id=3, open_time=07/10/2026 18:50:33, tamaño=807 MB
-========================================================
-✅ [PASS] 01 - Conexión aterrizó en el contenedor esperado (agnbda_s1): con_name = AGNBDA_S1
-✅ [PASS] 02 - Modo de apertura de la PDB agnbda_s1: open_mode = READ WRITE
-
-
-🏆 RESUMEN: 2/2 validaciones correctas
-FVH: faa274f176d07a3d73fb57bd755b9140ddb171220a03c15d143b7242bbe025f8
-==============: Fin de captura :=======================
-
-
-==> Limpiando objetos de validación en CDB$ROOT...
-CHK:66a5c7a59793539013ca08d4de6ee2832b97b0c045a99db3169b7af2ea25f474
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> exit;
